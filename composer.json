@@ -1,0 +1,15 @@
+{
+    "name": "travelopia/wordpress-blade",
+    "description": "Travelopia's WordPress blade plugin that enables the use of Laravel Blade templating engine within WordPress themes.",
+    "type": "wordpress-plugin",
+    "license": "MIT",
+    "authors": [
+      {
+        "name": "Travelopia",
+        "homepage": "https://www.travelopia.com"
+      }
+    ],
+    "require": {
+        "illuminate/view": "^v10.25.1"
+    }
+}
