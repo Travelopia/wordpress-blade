@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<ruleset name="WordPress Coding Standards">
+	<rule ref="Travelopia-WordPress" />
+
+	<file>./bin</file>
+	<file>./inc</file>
+
+	<!--@see https://github.com/WordPress/WordPress-Coding-Standards/issues/2035#issuecomment-1325532520-->
+	<ini name="error_reporting" value="E_ALL &#38; ~E_DEPRECATED" />
+</ruleset>
