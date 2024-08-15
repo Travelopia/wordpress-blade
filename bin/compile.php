@@ -8,25 +8,28 @@
 namespace Travelopia\Blade;
 
 // Get path to Blade config.
-$options     = getopt( 'c:', [ 'config-file:' ] );
-$config_file = $options['c'] ?? $options['config-file'] ?? '';
+$options              = getopt( 'c:v:', [ 'config-file:', 'vendor-autoload-file:' ] );
+$config_file          = $options['c'] ?? $options['config-file'] ?? '';
+$vendor_autoload_file = $options['v'] ?? $options['vendor-autoload-file'] ?? __DIR__ . '/../../../../vendor/autoload.php';
 
-// Check if a path was sent.
+// Check if a config path was set.
 if ( empty( $config_file ) || ! file_exists( $config_file ) ) {
 	echo "\033[31m✗ Path to config file missing!\n";
 	exit( 0 );
 }
 
-// Load file.
-require_once $config_file;
-
-// Composer autoloader.
-if ( file_exists( __DIR__ . '/../vendor/autoload.php' ) ) {
-	require_once __DIR__ . '/../vendor/autoload.php';
+// Check if vendor autoload file was set.
+if ( empty( $vendor_autoload_file ) || ! file_exists( $vendor_autoload_file ) ) {
+	echo "\033[31m✗ Path to config file missing!\n";
+	exit( 0 );
 }
 
-// Bootstrap Blade.
+// Load files.
+require_once $config_file;
+require_once $vendor_autoload_file;
 require_once __DIR__ . '/../inc/namespace.php';
+
+// Bootstrap Blade.
 bootstrap();
 
 // Initialize blade.
