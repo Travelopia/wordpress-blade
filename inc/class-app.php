@@ -2,7 +2,7 @@
 /**
  * App Class.
  *
- * @package travelopia-blade
+ * @package wordpress-blade
  */
 
 namespace Travelopia\Blade;
@@ -21,6 +21,7 @@ class App extends Container {
 	 * @see \Illuminate\Contracts\Foundation\Application::isDownForMaintenance()
 	 */
 	public function isDownForMaintenance(): bool {
+		// Disable this feature.
 		return false;
 	}
 
@@ -33,11 +34,14 @@ class App extends Container {
 	 *
 	 * @see \Illuminate\Contracts\Foundation\Application::environment()
 	 */
-	public function environment( ...$environments ) {
+	public function environment( ...$environments ) { // phpcs:ignore
+		// Check if we have environments.
 		if ( empty( $environments ) ) {
+			// We don't add one.
 			return 'travelopia';
 		}
 
+		// Check if environment exists in the list.
 		return in_array(
 			'travelopia',
 			is_array( $environments[0] ) ? $environments[0] : $environments,
@@ -53,6 +57,7 @@ class App extends Container {
 	 * @see \Illuminate\Contracts\Foundation\Application::getNamespace()
 	 */
 	public function getNamespace(): string {
+		// The namespace.
 		return 'Travelopia\\Blade\\';
 	}
 }

@@ -1,0 +1,38 @@
+name: Coding Standards and Tests
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          coverage: none
+          tools: composer, cs2pr
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Composer cache
+        id: composer-cache
+        uses: actions/cache@v4
+        with:
+          path: vendor
+          key: composer-${{ hashFiles( 'composer.lock' ) }}-${{ hashFiles( '.github/workflows/tests.yml' ) }}
+
+      - name: Install Composer dependencies
+        if: steps.composer-cache.outputs.cache-hit != 'true' || steps.travelopia-packages-cache.outputs.cache-hit != 'true'
+        run: composer install
+
+      - name: PHP Coding standards
+        run: composer run lint

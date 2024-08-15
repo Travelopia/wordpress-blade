@@ -1,7 +1,7 @@
 {
     "name": "travelopia/wordpress-blade",
-    "description": "Travelopia's WordPress blade plugin that enables the use of Laravel Blade templating engine within WordPress themes.",
-    "type": "wordpress-plugin",
+    "description": "Use Laravel Blade components in WordPress.",
+    "type": "wordpress-muplugin",
     "license": "MIT",
     "authors": [
       {
@@ -10,6 +10,17 @@
       }
     ],
     "require": {
-        "illuminate/view": "^v10.25.1"
+        "illuminate/view": "^v10.48.20"
+    },
+    "require-dev": {
+        "travelopia/wordpress-coding-standards": "^1.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "scripts": {
+        "lint": "phpcs"
     }
 }

@@ -1,20 +1,22 @@
 <?php
 /**
  * Plugin Name: Travelopia WordPress Blade
- * Description: Travelopia WordPress Blade plugin - that enables the use of Laravel Blade templating engine within WordPress themes.
+ * Description: Use Laravel Blade components in WordPress.
  * Author: Travelopia Team
  * Author URI: https://www.travelopia.com
  * Version: 1.0.0
  *
- * @package travelopia-blade
+ * @package wordpress-blade
  */
 
 namespace Travelopia\Blade;
 
+// Load Composer autoloader.
 if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
 	require_once __DIR__ . '/vendor/autoload.php';
 }
 
+// Load plugin code.
 require_once __DIR__ . '/inc/namespace.php';
 
 // Kick it off.

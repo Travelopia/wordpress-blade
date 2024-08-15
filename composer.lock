@@ -4,20 +4,89 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "60c99b8a1b98f0f9c1db279827259424",
+    "content-hash": "3a55516067ee877119b82459082ce476",
     "packages": [
         {
-            "name": "doctrine/inflector",
-            "version": "2.0.8",
+            "name": "carbonphp/carbon-doctrine-types",
+            "version": "3.2.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/doctrine/inflector.git",
-                "reference": "f9301a5b2fb1216b2b08f02ba04dc45423db6bff"
+                "url": "https://github.com/CarbonPHP/carbon-doctrine-types.git",
+                "reference": "18ba5ddfec8976260ead6e866180bd5d2f71aa1d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/inflector/zipball/f9301a5b2fb1216b2b08f02ba04dc45423db6bff",
-                "reference": "f9301a5b2fb1216b2b08f02ba04dc45423db6bff",
+                "url": "https://api.github.com/repos/CarbonPHP/carbon-doctrine-types/zipball/18ba5ddfec8976260ead6e866180bd5d2f71aa1d",
+                "reference": "18ba5ddfec8976260ead6e866180bd5d2f71aa1d",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1"
+            },
+            "conflict": {
+                "doctrine/dbal": "<4.0.0 || >=5.0.0"
+            },
+            "require-dev": {
+                "doctrine/dbal": "^4.0.0",
+                "nesbot/carbon": "^2.71.0 || ^3.0.0",
+                "phpunit/phpunit": "^10.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Carbon\\Doctrine\\": "src/Carbon/Doctrine/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "KyleKatarn",
+                    "email": "kylekatarnls@gmail.com"
+                }
+            ],
+            "description": "Types to use Carbon in Doctrine",
+            "keywords": [
+                "carbon",
+                "date",
+                "datetime",
+                "doctrine",
+                "time"
+            ],
+            "support": {
+                "issues": "https://github.com/CarbonPHP/carbon-doctrine-types/issues",
+                "source": "https://github.com/CarbonPHP/carbon-doctrine-types/tree/3.2.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/kylekatarnls",
+                    "type": "github"
+                },
+                {
+                    "url": "https://opencollective.com/Carbon",
+                    "type": "open_collective"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/nesbot/carbon",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2024-02-09T16:56:22+00:00"
+        },
+        {
+            "name": "doctrine/inflector",
+            "version": "2.0.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/inflector.git",
+                "reference": "5817d0659c5b50c9b950feb9af7b9668e2c436bc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/inflector/zipball/5817d0659c5b50c9b950feb9af7b9668e2c436bc",
+                "reference": "5817d0659c5b50c9b950feb9af7b9668e2c436bc",
                 "shasum": ""
             },
             "require": {
@@ -79,7 +148,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/inflector/issues",
-                "source": "https://github.com/doctrine/inflector/tree/2.0.8"
+                "source": "https://github.com/doctrine/inflector/tree/2.0.10"
             },
             "funding": [
                 {
@@ -95,20 +164,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-06-16T13:40:37+00:00"
+            "time": "2024-02-18T20:23:39+00:00"
         },
         {
             "name": "illuminate/bus",
-            "version": "v10.25.1",
+            "version": "v10.48.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/bus.git",
-                "reference": "aba48b9b7b9266a62b8e5ece47919533b3d49de7"
+                "reference": "252e200dacaeb168675cbf1aa26dbead57492a6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/bus/zipball/aba48b9b7b9266a62b8e5ece47919533b3d49de7",
-                "reference": "aba48b9b7b9266a62b8e5ece47919533b3d49de7",
+                "url": "https://api.github.com/repos/illuminate/bus/zipball/252e200dacaeb168675cbf1aa26dbead57492a6c",
+                "reference": "252e200dacaeb168675cbf1aa26dbead57492a6c",
                 "shasum": ""
             },
             "require": {
@@ -148,20 +217,20 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2023-08-27T20:33:50+00:00"
+            "time": "2024-05-24T17:00:27+00:00"
         },
         {
             "name": "illuminate/collections",
-            "version": "v10.25.1",
+            "version": "v10.48.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/collections.git",
-                "reference": "133f59956c8002448b07a3ff5f4352f3b3de5614"
+                "reference": "37c863cffb345869dd134eff8e646bc82a19cc96"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/collections/zipball/133f59956c8002448b07a3ff5f4352f3b3de5614",
-                "reference": "133f59956c8002448b07a3ff5f4352f3b3de5614",
+                "url": "https://api.github.com/repos/illuminate/collections/zipball/37c863cffb345869dd134eff8e646bc82a19cc96",
+                "reference": "37c863cffb345869dd134eff8e646bc82a19cc96",
                 "shasum": ""
             },
             "require": {
@@ -203,11 +272,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2023-09-19T22:43:12+00:00"
+            "time": "2024-06-19T14:25:05+00:00"
         },
         {
             "name": "illuminate/conditionable",
-            "version": "v10.25.1",
+            "version": "v10.48.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/conditionable.git",
@@ -253,7 +322,7 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v10.25.1",
+            "version": "v10.48.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
@@ -304,16 +373,16 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v10.25.1",
+            "version": "v10.48.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
-                "reference": "6c39fba7b2311e28f5c6ac7d729e3d49a2a98406"
+                "reference": "8d7152c4a1f5d9cf7da3e8b71f23e4556f6138ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/contracts/zipball/6c39fba7b2311e28f5c6ac7d729e3d49a2a98406",
-                "reference": "6c39fba7b2311e28f5c6ac7d729e3d49a2a98406",
+                "url": "https://api.github.com/repos/illuminate/contracts/zipball/8d7152c4a1f5d9cf7da3e8b71f23e4556f6138ac",
+                "reference": "8d7152c4a1f5d9cf7da3e8b71f23e4556f6138ac",
                 "shasum": ""
             },
             "require": {
@@ -348,20 +417,20 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2023-09-05T19:07:46+00:00"
+            "time": "2024-01-15T18:52:32+00:00"
         },
         {
             "name": "illuminate/events",
-            "version": "v10.25.1",
+            "version": "v10.48.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/events.git",
-                "reference": "e8cbfa31e1ada8d178ffcd7a5e26e101ec280c59"
+                "reference": "a931bfa88edc6ac52c9abbfd7b769343d321d3eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/events/zipball/e8cbfa31e1ada8d178ffcd7a5e26e101ec280c59",
-                "reference": "e8cbfa31e1ada8d178ffcd7a5e26e101ec280c59",
+                "url": "https://api.github.com/repos/illuminate/events/zipball/a931bfa88edc6ac52c9abbfd7b769343d321d3eb",
+                "reference": "a931bfa88edc6ac52c9abbfd7b769343d321d3eb",
                 "shasum": ""
             },
             "require": {
@@ -403,20 +472,20 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2023-08-11T15:02:04+00:00"
+            "time": "2024-03-04T14:41:04+00:00"
         },
         {
             "name": "illuminate/filesystem",
-            "version": "v10.25.1",
+            "version": "v10.48.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/filesystem.git",
-                "reference": "8f355f9e281a4219671be0a82195f49153b1bced"
+                "reference": "592fb581a52fba43bf78c2e4b22db540c9f9f149"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/filesystem/zipball/8f355f9e281a4219671be0a82195f49153b1bced",
-                "reference": "8f355f9e281a4219671be0a82195f49153b1bced",
+                "url": "https://api.github.com/repos/illuminate/filesystem/zipball/592fb581a52fba43bf78c2e4b22db540c9f9f149",
+                "reference": "592fb581a52fba43bf78c2e4b22db540c9f9f149",
                 "shasum": ""
             },
             "require": {
@@ -447,6 +516,9 @@
                 }
             },
             "autoload": {
+                "files": [
+                    "functions.php"
+                ],
                 "psr-4": {
                     "Illuminate\\Filesystem\\": ""
                 }
@@ -467,11 +539,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2023-09-15T22:35:37+00:00"
+            "time": "2024-03-11T21:45:53+00:00"
         },
         {
             "name": "illuminate/macroable",
-            "version": "v10.25.1",
+            "version": "v10.48.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/macroable.git",
@@ -517,16 +589,16 @@
         },
         {
             "name": "illuminate/pipeline",
-            "version": "v10.25.1",
+            "version": "v10.48.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/pipeline.git",
-                "reference": "f2119ae9a26e420bf0ed9d5e7e7aa4548547e7b1"
+                "reference": "f802187e917a171332cc90f8c1a102939c57405d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/pipeline/zipball/f2119ae9a26e420bf0ed9d5e7e7aa4548547e7b1",
-                "reference": "f2119ae9a26e420bf0ed9d5e7e7aa4548547e7b1",
+                "url": "https://api.github.com/repos/illuminate/pipeline/zipball/f802187e917a171332cc90f8c1a102939c57405d",
+                "reference": "f802187e917a171332cc90f8c1a102939c57405d",
                 "shasum": ""
             },
             "require": {
@@ -561,20 +633,20 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2023-03-03T15:55:44+00:00"
+            "time": "2023-12-19T14:47:26+00:00"
         },
         {
             "name": "illuminate/support",
-            "version": "v10.25.1",
+            "version": "v10.48.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "c7cf96f64ae6766a85fcd17f46afcae5a6a88744"
+                "reference": "56c6d9895605b019e3debb9440454596ef99312a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/c7cf96f64ae6766a85fcd17f46afcae5a6a88744",
-                "reference": "c7cf96f64ae6766a85fcd17f46afcae5a6a88744",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/56c6d9895605b019e3debb9440454596ef99312a",
+                "reference": "56c6d9895605b019e3debb9440454596ef99312a",
                 "shasum": ""
             },
             "require": {
@@ -632,20 +704,20 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2023-09-21T20:37:39+00:00"
+            "time": "2024-05-20T13:31:33+00:00"
         },
         {
             "name": "illuminate/view",
-            "version": "v10.25.1",
+            "version": "v10.48.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/view.git",
-                "reference": "8d92ac6e6165db9122cbe741c272292377954950"
+                "reference": "76a1405bc3e1d0a19e8d2db3bd5b991ed10b31f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/view/zipball/8d92ac6e6165db9122cbe741c272292377954950",
-                "reference": "8d92ac6e6165db9122cbe741c272292377954950",
+                "url": "https://api.github.com/repos/illuminate/view/zipball/76a1405bc3e1d0a19e8d2db3bd5b991ed10b31f7",
+                "reference": "76a1405bc3e1d0a19e8d2db3bd5b991ed10b31f7",
                 "shasum": ""
             },
             "require": {
@@ -686,23 +758,24 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2023-09-25T00:45:27+00:00"
+            "time": "2024-05-21T17:37:01+00:00"
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.71.0",
+            "version": "2.72.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "98276233188583f2ff845a0f992a235472d9466a"
+                "reference": "afd46589c216118ecd48ff2b95d77596af1e57ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/98276233188583f2ff845a0f992a235472d9466a",
-                "reference": "98276233188583f2ff845a0f992a235472d9466a",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/afd46589c216118ecd48ff2b95d77596af1e57ed",
+                "reference": "afd46589c216118ecd48ff2b95d77596af1e57ed",
                 "shasum": ""
             },
             "require": {
+                "carbonphp/carbon-doctrine-types": "*",
                 "ext-json": "*",
                 "php": "^7.1.8 || ^8.0",
                 "psr/clock": "^1.0",
@@ -714,8 +787,8 @@
                 "psr/clock-implementation": "1.0"
             },
             "require-dev": {
-                "doctrine/dbal": "^2.0 || ^3.1.4",
-                "doctrine/orm": "^2.7",
+                "doctrine/dbal": "^2.0 || ^3.1.4 || ^4.0",
+                "doctrine/orm": "^2.7 || ^3.0",
                 "friendsofphp/php-cs-fixer": "^3.0",
                 "kylekatarnls/multi-tester": "^2.0",
                 "ondrejmirtes/better-reflection": "*",
@@ -732,8 +805,8 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-3.x": "3.x-dev",
-                    "dev-master": "2.x-dev"
+                    "dev-master": "3.x-dev",
+                    "dev-2.x": "2.x-dev"
                 },
                 "laravel": {
                     "providers": [
@@ -792,7 +865,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-09-25T11:31:05+00:00"
+            "time": "2024-06-03T19:18:41+00:00"
         },
         {
             "name": "psr/clock",
@@ -948,16 +1021,16 @@
         },
         {
             "name": "symfony/deprecation-contracts",
-            "version": "v3.3.0",
+            "version": "v3.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/deprecation-contracts.git",
-                "reference": "7c3aff79d10325257a001fcf92d991f24fc967cf"
+                "reference": "0e0d29ce1f20deffb4ab1b016a7257c4f1e789a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/7c3aff79d10325257a001fcf92d991f24fc967cf",
-                "reference": "7c3aff79d10325257a001fcf92d991f24fc967cf",
+                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/0e0d29ce1f20deffb4ab1b016a7257c4f1e789a1",
+                "reference": "0e0d29ce1f20deffb4ab1b016a7257c4f1e789a1",
                 "shasum": ""
             },
             "require": {
@@ -966,7 +1039,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "3.4-dev"
+                    "dev-main": "3.5-dev"
                 },
                 "thanks": {
                     "name": "symfony/contracts",
@@ -995,7 +1068,7 @@
             "description": "A generic function and convention to trigger deprecation notices",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/deprecation-contracts/tree/v3.3.0"
+                "source": "https://github.com/symfony/deprecation-contracts/tree/v3.5.0"
             },
             "funding": [
                 {
@@ -1011,27 +1084,27 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-05-23T14:45:45+00:00"
+            "time": "2024-04-18T09:32:20+00:00"
         },
         {
             "name": "symfony/finder",
-            "version": "v6.3.3",
+            "version": "v6.4.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
-                "reference": "9915db259f67d21eefee768c1abcf1cc61b1fc9e"
+                "reference": "af29198d87112bebdd397bd7735fbd115997824c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/9915db259f67d21eefee768c1abcf1cc61b1fc9e",
-                "reference": "9915db259f67d21eefee768c1abcf1cc61b1fc9e",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/af29198d87112bebdd397bd7735fbd115997824c",
+                "reference": "af29198d87112bebdd397bd7735fbd115997824c",
                 "shasum": ""
             },
             "require": {
                 "php": ">=8.1"
             },
             "require-dev": {
-                "symfony/filesystem": "^6.0"
+                "symfony/filesystem": "^6.0|^7.0"
             },
             "type": "library",
             "autoload": {
@@ -1059,7 +1132,7 @@
             "description": "Finds files and directories via an intuitive fluent interface",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/finder/tree/v6.3.3"
+                "source": "https://github.com/symfony/finder/tree/v6.4.10"
             },
             "funding": [
                 {
@@ -1075,20 +1148,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-07-31T08:31:44+00:00"
+            "time": "2024-07-24T07:06:38+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.28.0",
+            "version": "v1.30.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "42292d99c55abe617799667f454222c54c60e229"
+                "reference": "fd22ab50000ef01661e2a31d850ebaa297f8e03c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/42292d99c55abe617799667f454222c54c60e229",
-                "reference": "42292d99c55abe617799667f454222c54c60e229",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/fd22ab50000ef01661e2a31d850ebaa297f8e03c",
+                "reference": "fd22ab50000ef01661e2a31d850ebaa297f8e03c",
                 "shasum": ""
             },
             "require": {
@@ -1102,9 +1175,6 @@
             },
             "type": "library",
             "extra": {
-                "branch-alias": {
-                    "dev-main": "1.28-dev"
-                },
                 "thanks": {
                     "name": "symfony/polyfill",
                     "url": "https://github.com/symfony/polyfill"
@@ -1142,7 +1212,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.28.0"
+                "source": "https://github.com/symfony/polyfill-mbstring/tree/v1.30.0"
             },
             "funding": [
                 {
@@ -1158,20 +1228,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-07-28T09:04:16+00:00"
+            "time": "2024-06-19T12:30:46+00:00"
         },
         {
             "name": "symfony/polyfill-php80",
-            "version": "v1.28.0",
+            "version": "v1.30.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php80.git",
-                "reference": "6caa57379c4aec19c0a12a38b59b26487dcfe4b5"
+                "reference": "77fa7995ac1b21ab60769b7323d600a991a90433"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/6caa57379c4aec19c0a12a38b59b26487dcfe4b5",
-                "reference": "6caa57379c4aec19c0a12a38b59b26487dcfe4b5",
+                "url": "https://api.github.com/repos/symfony/polyfill-php80/zipball/77fa7995ac1b21ab60769b7323d600a991a90433",
+                "reference": "77fa7995ac1b21ab60769b7323d600a991a90433",
                 "shasum": ""
             },
             "require": {
@@ -1179,9 +1249,6 @@
             },
             "type": "library",
             "extra": {
-                "branch-alias": {
-                    "dev-main": "1.28-dev"
-                },
                 "thanks": {
                     "name": "symfony/polyfill",
                     "url": "https://github.com/symfony/polyfill"
@@ -1225,7 +1292,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-php80/tree/v1.28.0"
+                "source": "https://github.com/symfony/polyfill-php80/tree/v1.30.0"
             },
             "funding": [
                 {
@@ -1241,20 +1308,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-01-26T09:26:14+00:00"
+            "time": "2024-05-31T15:07:36+00:00"
         },
         {
             "name": "symfony/translation",
-            "version": "v6.3.3",
+            "version": "v6.4.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "3ed078c54bc98bbe4414e1e9b2d5e85ed5a5c8bd"
+                "reference": "94041203f8ac200ae9e7c6a18fa6137814ccecc9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/3ed078c54bc98bbe4414e1e9b2d5e85ed5a5c8bd",
-                "reference": "3ed078c54bc98bbe4414e1e9b2d5e85ed5a5c8bd",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/94041203f8ac200ae9e7c6a18fa6137814ccecc9",
+                "reference": "94041203f8ac200ae9e7c6a18fa6137814ccecc9",
                 "shasum": ""
             },
             "require": {
@@ -1277,19 +1344,19 @@
                 "symfony/translation-implementation": "2.3|3.0"
             },
             "require-dev": {
-                "nikic/php-parser": "^4.13",
+                "nikic/php-parser": "^4.18|^5.0",
                 "psr/log": "^1|^2|^3",
-                "symfony/config": "^5.4|^6.0",
-                "symfony/console": "^5.4|^6.0",
-                "symfony/dependency-injection": "^5.4|^6.0",
-                "symfony/finder": "^5.4|^6.0",
+                "symfony/config": "^5.4|^6.0|^7.0",
+                "symfony/console": "^5.4|^6.0|^7.0",
+                "symfony/dependency-injection": "^5.4|^6.0|^7.0",
+                "symfony/finder": "^5.4|^6.0|^7.0",
                 "symfony/http-client-contracts": "^2.5|^3.0",
-                "symfony/http-kernel": "^5.4|^6.0",
-                "symfony/intl": "^5.4|^6.0",
+                "symfony/http-kernel": "^5.4|^6.0|^7.0",
+                "symfony/intl": "^5.4|^6.0|^7.0",
                 "symfony/polyfill-intl-icu": "^1.21",
-                "symfony/routing": "^5.4|^6.0",
+                "symfony/routing": "^5.4|^6.0|^7.0",
                 "symfony/service-contracts": "^2.5|^3",
-                "symfony/yaml": "^5.4|^6.0"
+                "symfony/yaml": "^5.4|^6.0|^7.0"
             },
             "type": "library",
             "autoload": {
@@ -1320,7 +1387,7 @@
             "description": "Provides tools to internationalize your application",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/translation/tree/v6.3.3"
+                "source": "https://github.com/symfony/translation/tree/v6.4.10"
             },
             "funding": [
                 {
@@ -1336,20 +1403,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-07-31T07:08:24+00:00"
+            "time": "2024-07-26T12:30:32+00:00"
         },
         {
             "name": "symfony/translation-contracts",
-            "version": "v3.3.0",
+            "version": "v3.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation-contracts.git",
-                "reference": "02c24deb352fb0d79db5486c0c79905a85e37e86"
+                "reference": "b9d2189887bb6b2e0367a9fc7136c5239ab9b05a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation-contracts/zipball/02c24deb352fb0d79db5486c0c79905a85e37e86",
-                "reference": "02c24deb352fb0d79db5486c0c79905a85e37e86",
+                "url": "https://api.github.com/repos/symfony/translation-contracts/zipball/b9d2189887bb6b2e0367a9fc7136c5239ab9b05a",
+                "reference": "b9d2189887bb6b2e0367a9fc7136c5239ab9b05a",
                 "shasum": ""
             },
             "require": {
@@ -1358,7 +1425,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "3.4-dev"
+                    "dev-main": "3.5-dev"
                 },
                 "thanks": {
                     "name": "symfony/contracts",
@@ -1398,7 +1465,7 @@
                 "standards"
             ],
             "support": {
-                "source": "https://github.com/symfony/translation-contracts/tree/v3.3.0"
+                "source": "https://github.com/symfony/translation-contracts/tree/v3.5.0"
             },
             "funding": [
                 {
@@ -1414,7 +1481,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-05-30T17:17:10+00:00"
+            "time": "2024-04-18T09:32:20+00:00"
         },
         {
             "name": "voku/portable-ascii",
@@ -1491,7 +1558,436 @@
             "time": "2022-03-08T17:03:00+00:00"
         }
     ],
-    "packages-dev": [],
+    "packages-dev": [
+        {
+            "name": "dealerdirect/phpcodesniffer-composer-installer",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHPCSStandards/composer-installer.git",
+                "reference": "4be43904336affa5c2f70744a348312336afd0da"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHPCSStandards/composer-installer/zipball/4be43904336affa5c2f70744a348312336afd0da",
+                "reference": "4be43904336affa5c2f70744a348312336afd0da",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0 || ^2.0",
+                "php": ">=5.4",
+                "squizlabs/php_codesniffer": "^2.0 || ^3.1.0 || ^4.0"
+            },
+            "require-dev": {
+                "composer/composer": "*",
+                "ext-json": "*",
+                "ext-zip": "*",
+                "php-parallel-lint/php-parallel-lint": "^1.3.1",
+                "phpcompatibility/php-compatibility": "^9.0",
+                "yoast/phpunit-polyfills": "^1.0"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "PHPCSStandards\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\Plugin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "PHPCSStandards\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Franck Nijhof",
+                    "email": "franck.nijhof@dealerdirect.com",
+                    "homepage": "http://www.frenck.nl",
+                    "role": "Developer / IT Manager"
+                },
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/PHPCSStandards/composer-installer/graphs/contributors"
+                }
+            ],
+            "description": "PHP_CodeSniffer Standards Composer Installer Plugin",
+            "homepage": "http://www.dealerdirect.com",
+            "keywords": [
+                "PHPCodeSniffer",
+                "PHP_CodeSniffer",
+                "code quality",
+                "codesniffer",
+                "composer",
+                "installer",
+                "phpcbf",
+                "phpcs",
+                "plugin",
+                "qa",
+                "quality",
+                "standard",
+                "standards",
+                "style guide",
+                "stylecheck",
+                "tests"
+            ],
+            "support": {
+                "issues": "https://github.com/PHPCSStandards/composer-installer/issues",
+                "source": "https://github.com/PHPCSStandards/composer-installer"
+            },
+            "time": "2023-01-05T11:28:13+00:00"
+        },
+        {
+            "name": "phpcsstandards/phpcsextra",
+            "version": "1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHPCSStandards/PHPCSExtra.git",
+                "reference": "11d387c6642b6e4acaf0bd9bf5203b8cca1ec489"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHPCSExtra/zipball/11d387c6642b6e4acaf0bd9bf5203b8cca1ec489",
+                "reference": "11d387c6642b6e4acaf0bd9bf5203b8cca1ec489",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4",
+                "phpcsstandards/phpcsutils": "^1.0.9",
+                "squizlabs/php_codesniffer": "^3.8.0"
+            },
+            "require-dev": {
+                "php-parallel-lint/php-console-highlighter": "^1.0",
+                "php-parallel-lint/php-parallel-lint": "^1.3.2",
+                "phpcsstandards/phpcsdevcs": "^1.1.6",
+                "phpcsstandards/phpcsdevtools": "^1.2.1",
+                "phpunit/phpunit": "^4.5 || ^5.0 || ^6.0 || ^7.0 || ^8.0 || ^9.0"
+            },
+            "type": "phpcodesniffer-standard",
+            "extra": {
+                "branch-alias": {
+                    "dev-stable": "1.x-dev",
+                    "dev-develop": "1.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Juliette Reinders Folmer",
+                    "homepage": "https://github.com/jrfnl",
+                    "role": "lead"
+                },
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/PHPCSStandards/PHPCSExtra/graphs/contributors"
+                }
+            ],
+            "description": "A collection of sniffs and standards for use with PHP_CodeSniffer.",
+            "keywords": [
+                "PHP_CodeSniffer",
+                "phpcbf",
+                "phpcodesniffer-standard",
+                "phpcs",
+                "standards",
+                "static analysis"
+            ],
+            "support": {
+                "issues": "https://github.com/PHPCSStandards/PHPCSExtra/issues",
+                "security": "https://github.com/PHPCSStandards/PHPCSExtra/security/policy",
+                "source": "https://github.com/PHPCSStandards/PHPCSExtra"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/PHPCSStandards",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/jrfnl",
+                    "type": "github"
+                },
+                {
+                    "url": "https://opencollective.com/php_codesniffer",
+                    "type": "open_collective"
+                }
+            ],
+            "time": "2023-12-08T16:49:07+00:00"
+        },
+        {
+            "name": "phpcsstandards/phpcsutils",
+            "version": "1.0.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHPCSStandards/PHPCSUtils.git",
+                "reference": "87b233b00daf83fb70f40c9a28692be017ea7c6c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHPCSUtils/zipball/87b233b00daf83fb70f40c9a28692be017ea7c6c",
+                "reference": "87b233b00daf83fb70f40c9a28692be017ea7c6c",
+                "shasum": ""
+            },
+            "require": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.4.1 || ^0.5 || ^0.6.2 || ^0.7 || ^1.0",
+                "php": ">=5.4",
+                "squizlabs/php_codesniffer": "^3.10.0 || 4.0.x-dev@dev"
+            },
+            "require-dev": {
+                "ext-filter": "*",
+                "php-parallel-lint/php-console-highlighter": "^1.0",
+                "php-parallel-lint/php-parallel-lint": "^1.3.2",
+                "phpcsstandards/phpcsdevcs": "^1.1.6",
+                "yoast/phpunit-polyfills": "^1.1.0 || ^2.0.0"
+            },
+            "type": "phpcodesniffer-standard",
+            "extra": {
+                "branch-alias": {
+                    "dev-stable": "1.x-dev",
+                    "dev-develop": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "PHPCSUtils/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Juliette Reinders Folmer",
+                    "homepage": "https://github.com/jrfnl",
+                    "role": "lead"
+                },
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/PHPCSStandards/PHPCSUtils/graphs/contributors"
+                }
+            ],
+            "description": "A suite of utility functions for use with PHP_CodeSniffer",
+            "homepage": "https://phpcsutils.com/",
+            "keywords": [
+                "PHP_CodeSniffer",
+                "phpcbf",
+                "phpcodesniffer-standard",
+                "phpcs",
+                "phpcs3",
+                "standards",
+                "static analysis",
+                "tokens",
+                "utility"
+            ],
+            "support": {
+                "docs": "https://phpcsutils.com/",
+                "issues": "https://github.com/PHPCSStandards/PHPCSUtils/issues",
+                "security": "https://github.com/PHPCSStandards/PHPCSUtils/security/policy",
+                "source": "https://github.com/PHPCSStandards/PHPCSUtils"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/PHPCSStandards",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/jrfnl",
+                    "type": "github"
+                },
+                {
+                    "url": "https://opencollective.com/php_codesniffer",
+                    "type": "open_collective"
+                }
+            ],
+            "time": "2024-05-20T13:34:27+00:00"
+        },
+        {
+            "name": "squizlabs/php_codesniffer",
+            "version": "3.10.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer.git",
+                "reference": "86e5f5dd9a840c46810ebe5ff1885581c42a3017"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/86e5f5dd9a840c46810ebe5ff1885581c42a3017",
+                "reference": "86e5f5dd9a840c46810ebe5ff1885581c42a3017",
+                "shasum": ""
+            },
+            "require": {
+                "ext-simplexml": "*",
+                "ext-tokenizer": "*",
+                "ext-xmlwriter": "*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0 || ^8.0 || ^9.3.4"
+            },
+            "bin": [
+                "bin/phpcbf",
+                "bin/phpcs"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Greg Sherwood",
+                    "role": "Former lead"
+                },
+                {
+                    "name": "Juliette Reinders Folmer",
+                    "role": "Current lead"
+                },
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/PHPCSStandards/PHP_CodeSniffer/graphs/contributors"
+                }
+            ],
+            "description": "PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files and detects violations of a defined set of coding standards.",
+            "homepage": "https://github.com/PHPCSStandards/PHP_CodeSniffer",
+            "keywords": [
+                "phpcs",
+                "standards",
+                "static analysis"
+            ],
+            "support": {
+                "issues": "https://github.com/PHPCSStandards/PHP_CodeSniffer/issues",
+                "security": "https://github.com/PHPCSStandards/PHP_CodeSniffer/security/policy",
+                "source": "https://github.com/PHPCSStandards/PHP_CodeSniffer",
+                "wiki": "https://github.com/PHPCSStandards/PHP_CodeSniffer/wiki"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/PHPCSStandards",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/jrfnl",
+                    "type": "github"
+                },
+                {
+                    "url": "https://opencollective.com/php_codesniffer",
+                    "type": "open_collective"
+                }
+            ],
+            "time": "2024-07-21T23:26:44+00:00"
+        },
+        {
+            "name": "travelopia/wordpress-coding-standards",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Travelopia/wordpress-coding-standards-phpcs.git",
+                "reference": "40df34c55bd1b671ed5790a6789787678205c181"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Travelopia/wordpress-coding-standards-phpcs/zipball/40df34c55bd1b671ed5790a6789787678205c181",
+                "reference": "40df34c55bd1b671ed5790a6789787678205c181",
+                "shasum": ""
+            },
+            "require": {
+                "wp-coding-standards/wpcs": "^3.1"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "*"
+            },
+            "type": "phpcodesniffer-standard",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Travelopia",
+                    "homepage": "https://www.travelopia.com"
+                }
+            ],
+            "description": "Travelopia's PHP WordPress Coding Standards",
+            "support": {
+                "issues": "https://github.com/Travelopia/wordpress-coding-standards-phpcs/issues",
+                "source": "https://github.com/Travelopia/wordpress-coding-standards-phpcs/tree/1.0.0"
+            },
+            "time": "2024-08-06T01:03:11+00:00"
+        },
+        {
+            "name": "wp-coding-standards/wpcs",
+            "version": "3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WordPress/WordPress-Coding-Standards.git",
+                "reference": "9333efcbff231f10dfd9c56bb7b65818b4733ca7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WordPress/WordPress-Coding-Standards/zipball/9333efcbff231f10dfd9c56bb7b65818b4733ca7",
+                "reference": "9333efcbff231f10dfd9c56bb7b65818b4733ca7",
+                "shasum": ""
+            },
+            "require": {
+                "ext-filter": "*",
+                "ext-libxml": "*",
+                "ext-tokenizer": "*",
+                "ext-xmlreader": "*",
+                "php": ">=5.4",
+                "phpcsstandards/phpcsextra": "^1.2.1",
+                "phpcsstandards/phpcsutils": "^1.0.10",
+                "squizlabs/php_codesniffer": "^3.9.0"
+            },
+            "require-dev": {
+                "php-parallel-lint/php-console-highlighter": "^1.0.0",
+                "php-parallel-lint/php-parallel-lint": "^1.3.2",
+                "phpcompatibility/php-compatibility": "^9.0",
+                "phpcsstandards/phpcsdevtools": "^1.2.0",
+                "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0 || ^8.0 || ^9.0"
+            },
+            "suggest": {
+                "ext-iconv": "For improved results",
+                "ext-mbstring": "For improved results"
+            },
+            "type": "phpcodesniffer-standard",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/WordPress/WordPress-Coding-Standards/graphs/contributors"
+                }
+            ],
+            "description": "PHP_CodeSniffer rules (sniffs) to enforce WordPress coding conventions",
+            "keywords": [
+                "phpcs",
+                "standards",
+                "static analysis",
+                "wordpress"
+            ],
+            "support": {
+                "issues": "https://github.com/WordPress/WordPress-Coding-Standards/issues",
+                "source": "https://github.com/WordPress/WordPress-Coding-Standards",
+                "wiki": "https://github.com/WordPress/WordPress-Coding-Standards/wiki"
+            },
+            "funding": [
+                {
+                    "url": "https://opencollective.com/php_codesniffer",
+                    "type": "custom"
+                }
+            ],
+            "time": "2024-03-25T16:39:00+00:00"
+        }
+    ],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": [],
@@ -1499,5 +1995,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }

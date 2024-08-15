@@ -6,11 +6,12 @@
  * CI and read-only production environments where the paths
  * to files and their modified times may be different.
  *
- * @package travelopia-blade
+ * @package wordpress-blade
  */
 
 namespace Travelopia\Blade;
 
+use ErrorException;
 use Illuminate\Support\Str;
 use Illuminate\View\Compilers\BladeCompiler;
 
@@ -32,7 +33,8 @@ class Compiler extends BladeCompiler {
 	 *
 	 * @return string
 	 */
-	public function getCompiledPath( $path ) {
+	public function getCompiledPath( $path ): string { // phpcs:ignore
+		// Get path.
 		$path = str_replace( getcwd(), '', $path );
 
 		return $this->cachePath . '/' . sha1( 'v2' . Str::after( $path, $this->basePath ) ) . '.' . $this->compiledExtension; // phpcs:ignore
@@ -44,12 +46,17 @@ class Compiler extends BladeCompiler {
 	 * @param string $path Path to view.
 	 *
 	 * @return bool
+	 *
+	 * @throws ErrorException Exception from the parent.
 	 */
-	public function isExpired( $path ) {
+	public function isExpired( $path ): bool { // phpcs:ignore
+		// If the cache is set to never expire (example on production environments)
+		// then set this to false or to "never expire".
 		if ( $this->never_expire_cache ) {
 			return false;
 		}
 
+		// This is not set in the config, set expiry as normal.
 		return parent::isExpired( $path );
 	}
 }

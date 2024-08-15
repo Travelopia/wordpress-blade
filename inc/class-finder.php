@@ -2,7 +2,7 @@
 /**
  * Finder Class.
  *
- * @package travelopia-blade
+ * @package wordpress-blade
  */
 
 namespace Travelopia\Blade;
@@ -21,9 +21,12 @@ class Finder extends FileViewFinder {
 	 *
 	 * @return array
 	 */
-	protected function getPossibleViewFiles( $name = '' ) {
-		$original_possibilities   = parent::getPossibleViewFiles( $name );
-		$original_possibilities[] = $name . '/index.blade.php';
-		return $original_possibilities;
+	protected function getPossibleViewFiles( $name = '' ): array { // phpcs:ignore
+		// Add `/index.blade.php` to the list of possible view files.
+		$possibilities   = parent::getPossibleViewFiles( $name );
+		$possibilities[] = $name . '/index.blade.php';
+
+		// Return all possibilities.
+		return $possibilities;
 	}
 }

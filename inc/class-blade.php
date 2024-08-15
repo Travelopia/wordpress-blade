@@ -2,7 +2,7 @@
 /**
  * Blade Class.
  *
- * @package travelopia-blade
+ * @package wordpress-blade
  */
 
 namespace Travelopia\Blade;
