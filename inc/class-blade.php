@@ -48,6 +48,13 @@ class Blade {
 	public string $path_to_compiled_views = '';
 
 	/**
+	 * Store the base path.
+	 *
+	 * @var string Base path.
+	 */
+	public string $base_path = '';
+
+	/**
 	 * Store view factory.
 	 *
 	 * @var ViewFactory View factory.
@@ -93,7 +100,7 @@ class Blade {
 
 		// Create View Factory capable of rendering PHP and Blade templates.
 		$view_resolver        = new EngineResolver();
-		$this->blade_compiler = new BladeCompiler( $filesystem, $this->path_to_compiled_views );
+		$this->blade_compiler = new BladeCompiler( $filesystem, $this->path_to_compiled_views, $this->base_path );
 
 		$this->blade_compiler->never_expire_cache = $this->never_expire_cache;
 
