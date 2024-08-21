@@ -34,8 +34,22 @@ class Compiler extends BladeCompiler {
 	 * @return string
 	 */
 	public function getCompiledPath( $path ): string { // phpcs:ignore
+		// Get current working directory.
+		$cwd = getcwd();
+
+		// Handle case if the current working directory is /wp-admin and webroot is /wp.
+		// This scenario is common in local development environments.
+		if ( str_contains( $cwd, '/wp/wp-admin' ) ) {
+			$cwd = str_replace( '/wp/wp-admin', '', $cwd );
+		}
+
+		// Handle case if the current working directory is /wp-admin.
+		if ( str_contains( $cwd, '/wp-admin' ) ) {
+			$cwd = str_replace( '/wp-admin', '', $cwd );
+		}
+
 		// Get path.
-		$path = str_replace( getcwd(), '', $path );
+		$path = str_replace( $cwd, '', $path );
 
 		return $this->cachePath . '/' . sha1( 'v2' . Str::after( $path, $this->basePath ) ) . '.' . $this->compiledExtension; // phpcs:ignore
 	}
