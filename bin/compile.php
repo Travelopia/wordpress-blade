@@ -15,13 +15,13 @@ $vendor_autoload_file = $options['v'] ?? $options['vendor-autoload-file'] ?? __D
 // Check if a config path was set.
 if ( empty( $config_file ) || ! file_exists( $config_file ) ) {
 	echo "\033[31m✗ Path to config file missing!\n";
-	exit( 0 );
+	exit( 1 );
 }
 
 // Check if vendor autoload file was set.
 if ( empty( $vendor_autoload_file ) || ! file_exists( $vendor_autoload_file ) ) {
 	echo "\033[31m✗ Path to config file missing!\n";
-	exit( 0 );
+	exit( 1 );
 }
 
 // Load files.
@@ -37,6 +37,7 @@ $blade_config                  = get_configuration();
 $blade                         = new Blade();
 $blade->paths_to_views         = $blade_config['paths_to_views'] ?? [];
 $blade->path_to_compiled_views = $blade_config['path_to_compiled_views'] ?? '';
+$blade->base_path              = $blade_config['base_path'] ?? '';
 $blade->initialize();
 
 // Build Blade cache.

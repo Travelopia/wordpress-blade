@@ -12,7 +12,6 @@
 namespace Travelopia\Blade;
 
 use ErrorException;
-use Illuminate\Support\Str;
 use Illuminate\View\Compilers\BladeCompiler;
 
 /**
@@ -25,20 +24,6 @@ class Compiler extends BladeCompiler {
 	 * @var bool Never expire cache.
 	 */
 	public bool $never_expire_cache = false;
-
-	/**
-	 * Get the path to the compiled version of a view.
-	 *
-	 * @param string $path Path to view.
-	 *
-	 * @return string
-	 */
-	public function getCompiledPath( $path ): string { // phpcs:ignore
-		// Get path.
-		$path = str_replace( getcwd(), '', $path );
-
-		return $this->cachePath . '/' . sha1( 'v2' . Str::after( $path, $this->basePath ) ) . '.' . $this->compiledExtension; // phpcs:ignore
-	}
 
 	/**
 	 * Determine if the view at the given path is expired.

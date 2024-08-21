@@ -62,6 +62,7 @@ define(
 		],
 		'path_to_compiled_views' => __DIR__ . '/wp-content/themes/<your-theme>/dist/blade', // Where you want Blade to save compiled files.
 		'never_expire_cache'     => false, // Use `true` on production environments.
+		'base_path'              => __DIR__, //  The base path that should be removed from paths before hashing.
 	]
 );
 ```
