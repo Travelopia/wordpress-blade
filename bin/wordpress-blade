@@ -15,7 +15,7 @@ use function Travelopia\Blade\get_configuration;
 // Get path to Blade config.
 $options              = getopt( 'c:v:', [ 'config-file:', 'vendor-autoload-file:' ] );
 $config_file          = $options['c'] ?? $options['config-file'] ?? '';
-$vendor_autoload_file = $options['v'] ?? $options['vendor-autoload-file'] ?? __DIR__ . '/../../../../vendor/autoload.php';
+$vendor_autoload_file = $options['v'] ?? $options['vendor-autoload-file'] ?? 'vendor/autoload.php';
 
 // Check if a config path was set.
 if ( empty( $config_file ) || ! file_exists( $config_file ) ) {
@@ -25,7 +25,7 @@ if ( empty( $config_file ) || ! file_exists( $config_file ) ) {
 
 // Check if vendor autoload file was set.
 if ( empty( $vendor_autoload_file ) || ! file_exists( $vendor_autoload_file ) ) {
-	echo "\033[31m✗ Path to config file missing!\n";
+	echo "\033[31m✗ Path to autoload file missing!\n";
 	exit( 1 );
 }
 
