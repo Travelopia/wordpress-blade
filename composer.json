@@ -9,6 +9,7 @@
         "homepage": "https://www.travelopia.com"
       }
     ],
+    "bin" : ["bin/wordpress-blade"],
     "require": {
         "illuminate/view": "^v10.48.20"
     },
