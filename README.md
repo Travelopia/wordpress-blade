@@ -39,7 +39,7 @@ Compile your Blade components for production as a best practice. Some production
 
 Run the following command:
 
-`php wp-content/mu-plugins/wordpress-blade/bin/compile.php --config-file=blade.config.php` - Ensure the path to the Blade config is correct.
+`composer exec wordpress-blade -- --config-file=blade.config.php` - Ensure the path to the Blade config is correct.
 
 ## Usage
 
