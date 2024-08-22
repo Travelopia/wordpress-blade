@@ -1,3 +1,5 @@
+#!/usr/bin/env php
+
 <?php
 /**
  * Compile Blade Cache.
@@ -5,7 +7,10 @@
  * @package wordpress-blade
  */
 
-namespace Travelopia\Blade;
+use Travelopia\Blade\Blade;
+
+use function Travelopia\Blade\bootstrap;
+use function Travelopia\Blade\get_configuration;
 
 // Get path to Blade config.
 $options              = getopt( 'c:v:', [ 'config-file:', 'vendor-autoload-file:' ] );
