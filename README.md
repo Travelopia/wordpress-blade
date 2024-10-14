@@ -17,6 +17,9 @@ Use Laravel Blade components in WordPress.
 	</tr>
 </table>
 
+## Video Tutorial
+▶ ️[tutorial](https://www.youtube.com/watch?v=M7aCzMkL7Lo)
+
 ## Installation
 
 ### Install via Composer (recommended):
@@ -25,7 +28,40 @@ Use Laravel Blade components in WordPress.
 $ composer require travelopia/wordpress-blade
 ```
 
-This installs it as an MU Plugin. Load it and use it as needed!
+* Your composer file should include this
+```json
+{
+	"name": "your/packagename",
+	"description": "Description",
+	"extra": {
+		"installer-paths": {
+			"wp-content/mu-plugins/{$name}/": ["type:wordpress-muplugin"]
+		}
+	},
+	"require": {
+		"travelopia/wordpress-blade": "^1.0.0",
+		"composer/installers": "^2.3"
+	},
+	"config": {
+		"allow-plugins": {
+			"composer/installers": true
+		}
+	},
+	"scripts": {
+		"wordpress-blade": "wordpress-blade"
+	}
+}
+```
+
+* This installs it as an MU Plugin.
+* Then load this plugin in your mu plugins loader file e.g. mu-plugins/loader.php
+```php
+require_once WPMU_PLUGIN_DIR . '/wordpress-blade/plugin.php';
+```
+* Then require the autoload file from vendor directory by adding the following code in your wp-config.php file.
+```php
+require_once 'vendor/autoload.php';
+```
 
 ### Manual Installation (if you know what you are doing):
 
