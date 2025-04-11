@@ -41,6 +41,13 @@ class Blade {
 	public array $paths_to_views = [];
 
 	/**
+	 * Store named paths for AnonymousComponentPaths.
+	 *
+	 * @var array Named paths for views.
+	 */
+	public array $named_paths = [];
+
+	/**
 	 * Store the path to the directory where all compiled views are cached.
 	 *
 	 * @var string Path to compiled views.
