@@ -84,12 +84,12 @@ function get_blade(): Blade {
 	$blade->view_callback          = __NAMESPACE__ . '\\view_callback';
 	$blade->initialize();
 
+	// Register named_paths components.
 	register_component_namespaces( $blade );
 
 	// Return initialized Blade object.
 	return $blade;
 }
-
 
 /**
  * Register component namespaces with the Blade compiler.
@@ -98,16 +98,16 @@ function get_blade(): Blade {
  *
  * @return void
  */
-function register_component_namespaces( Blade $blade ): void {
-	// Get the blade compiler
+function register_component_namespaces( Blade $blade = null ): void {
+	// Get the blade compiler.
 	$compiler = $blade->blade_compiler;
 
-	// Register each named path as an anonymous component path
+	// Register each named path as an anonymous component path.
 	foreach ( $blade->named_paths as $prefix => $path ) {
 		// Create absolute paths.
 		$absolute_path = $blade->base_path . $path;
 
-		// Register the anonymous component path
+		// Register the anonymous component path.
 		$compiler->anonymousComponentPath( $absolute_path, $prefix );
 	}
 }
