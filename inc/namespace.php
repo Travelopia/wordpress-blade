@@ -104,11 +104,8 @@ function register_component_namespaces( Blade $blade = null ): void {
 
 	// Register each named path as an anonymous component path.
 	foreach ( $blade->named_paths as $prefix => $path ) {
-		// Create absolute paths.
-		$absolute_path = $blade->base_path . $path;
-
 		// Register the anonymous component path.
-		$compiler->anonymousComponentPath( $absolute_path, $prefix );
+		$compiler->anonymousComponentPath( $path, $prefix );
 	}
 }
 
