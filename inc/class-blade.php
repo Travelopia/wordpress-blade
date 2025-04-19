@@ -138,6 +138,12 @@ class Blade {
 			} )::getFacadeAccessor()
 		);
 
+		// Register each named path as an anonymous component path.
+		foreach ( $this->named_paths as $prefix => $path ) {
+			// Register the anonymous component path.
+			$this->blade_compiler->anonymousComponentPath( $path, $prefix );
+		}
+
 		// Callback function for every view.
 		if ( is_callable( $this->view_callback ) ) {
 			$this->view_factory->composer( '*' , function( $view ) {

@@ -77,36 +77,15 @@ function get_blade(): Blade {
 	$blade_config                  = get_configuration();
 	$blade                         = new Blade();
 	$blade->paths_to_views         = apply_filters( 'wordpress_blade_view_paths', $blade_config['paths_to_views'] );
-	$blade->named_paths            = apply_filters( 'wordpress_blade_named_paths', $blade_config['named_paths'] );
+	$blade->named_paths            = apply_filters( 'wordpress_blade_named_paths', $blade_config['named_paths'] ?? [] );
 	$blade->path_to_compiled_views = apply_filters( 'wordpress_blade_compiled_path', $blade_config['path_to_compiled_views'] );
 	$blade->never_expire_cache     = apply_filters( 'wordpress_blade_never_expire_cache', $blade_config['never_expire_cache'] );
 	$blade->base_path              = apply_filters( 'wordpress_blade_base_path', $blade_config['base_path'] );
 	$blade->view_callback          = __NAMESPACE__ . '\\view_callback';
 	$blade->initialize();
 
-	// Register named_paths components.
-	register_component_namespaces( $blade );
-
 	// Return initialized Blade object.
 	return $blade;
-}
-
-/**
- * Register component namespaces with the Blade compiler.
- *
- * @param Blade $blade The Blade instance.
- *
- * @return void
- */
-function register_component_namespaces( Blade $blade = null ): void {
-	// Get the blade compiler.
-	$compiler = $blade->blade_compiler;
-
-	// Register each named path as an anonymous component path.
-	foreach ( $blade->named_paths as $prefix => $path ) {
-		// Register the anonymous component path.
-		$compiler->anonymousComponentPath( $path, $prefix );
-	}
 }
 
 /**
