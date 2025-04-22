@@ -41,13 +41,6 @@ class Blade {
 	public array $paths_to_views = [];
 
 	/**
-	 * Store named paths for AnonymousComponentPaths.
-	 *
-	 * @var array Named paths for views.
-	 */
-	public array $named_paths = [];
-
-	/**
 	 * Store the path to the directory where all compiled views are cached.
 	 *
 	 * @var string Path to compiled views.
@@ -138,8 +131,13 @@ class Blade {
 			} )::getFacadeAccessor()
 		);
 
-		// Register each named path as an anonymous component path.
-		foreach ( $this->named_paths as $prefix => $path ) {
+		// Register each path as an anonymous component path with its prefix.
+		foreach ( $this->paths_to_views as $prefix => $path ) {
+			// Skip paths without a prefix in the key.
+			if ( is_numeric( $prefix ) ) {
+				continue;
+			}
+
 			// Register the anonymous component path.
 			$this->blade_compiler->anonymousComponentPath( $path, $prefix );
 		}
