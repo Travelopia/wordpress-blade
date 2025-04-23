@@ -94,6 +94,7 @@ define(
 	[
 		'paths_to_views'         => [
 			__DIR__ . '/wp-content/themes/<your-theme>/<path-to-your-components>',
+			'parts' => __DIR__ . '/wp-content/themes/<your-theme>/<path-to-your-components>', // With namespace.
 			// Any other paths where Blade needs to look for components.
 		],
 		'path_to_compiled_views' => __DIR__ . '/wp-content/themes/<your-theme>/dist/blade', // Where you want Blade to save compiled files.
@@ -158,3 +159,9 @@ Travelopia\Blade\load_view( $name, $attributes, $echo );
 ```
 
 This is especially useful when you want to load components from Blocks and Full Site Editing.
+
+If you've used namespaces, you can use them like so:
+
+```bladehtml
+<x-parts::my-part></x-parts::my-part>
+```
