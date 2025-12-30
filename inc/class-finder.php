@@ -24,7 +24,7 @@ class Finder extends FileViewFinder {
 	protected function getPossibleViewFiles( $name = '' ): array { // phpcs:ignore
 		// Add `/index.blade.php` to the list of possible view files.
 		$possibilities   = parent::getPossibleViewFiles( $name );
-		$index = $name . '/index.blade.php';
+		$index           = $name . '/index.blade.php';
 
 		// Only add index blade if not already in the list.
 		if ( ! in_array( $index, $possibilities, true ) ) {
