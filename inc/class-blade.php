@@ -140,6 +140,7 @@ class Blade {
 
 			// Register the anonymous component path.
 			$this->blade_compiler->anonymousComponentPath( $path, $prefix );
+			$this->view_factory->addNamespace( $prefix, $path );
 		}
 
 		// Callback function for every view.
