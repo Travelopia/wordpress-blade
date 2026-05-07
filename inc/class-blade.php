@@ -104,6 +104,13 @@ class Blade {
 
 		$this->blade_compiler->never_expire_cache = $this->never_expire_cache;
 
+		// Disable double-encoding on `{{ }}` output. WordPress's `esc_*()` helpers
+		// already encode special characters upstream of the template, so leaving Blade's
+		// default `e( $value, true )` in place re-encodes them — `&amp;` becomes the
+		// literal text `&amp;amp;`. Calling `setEchoFormat()` with the explicit `false`
+		// flag preserves the upstream encoding.
+		$this->blade_compiler->setEchoFormat( 'e(%s, false)' );
+
 		$view_resolver->register( 'blade', function () {
 			return new CompilerEngine( $this->blade_compiler );
 		} );
