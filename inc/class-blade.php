@@ -55,6 +55,17 @@ class Blade {
 	public string $base_path = '';
 
 	/**
+	 * Whether to double-encode entities in `{{ }}` output.
+	 *
+	 * `true` preserves Blade's default `e( $value, true )` (double-encoding).
+	 * `false` switches to `e( $value, false )` so already-escaped strings
+	 * (e.g. output of WordPress `esc_*()` helpers) are not re-encoded.
+	 *
+	 * @var bool Encode echo.
+	 */
+	public bool $encode_echo = true;
+
+	/**
 	 * Store view factory.
 	 *
 	 * @var ViewFactory View factory.
@@ -104,12 +115,13 @@ class Blade {
 
 		$this->blade_compiler->never_expire_cache = $this->never_expire_cache;
 
-		// Disable double-encoding on `{{ }}` output. WordPress's `esc_*()` helpers
-		// already encode special characters upstream of the template, so leaving Blade's
-		// default `e( $value, true )` in place re-encodes them — `&amp;` becomes the
-		// literal text `&amp;amp;`. Calling `setEchoFormat()` with the explicit `false`
-		// flag preserves the upstream encoding.
-		$this->blade_compiler->setEchoFormat( 'e(%s, false)' );
+		// Optionally disable double-encoding on `{{ }}` output. WordPress's `esc_*()`
+		// helpers already encode special characters upstream of the template, so Blade's
+		// default `e( $value, true )` re-encodes them — `&amp;` becomes the literal text
+		// `&amp;amp;`. Sites can opt in to single-encoding via the `encode_echo` config.
+		if ( ! $this->encode_echo ) {
+			$this->blade_compiler->setEchoFormat( 'e(%s, false)' );
+		}
 
 		$view_resolver->register( 'blade', function () {
 			return new CompilerEngine( $this->blade_compiler );

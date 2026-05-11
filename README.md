@@ -100,9 +100,16 @@ define(
 		'path_to_compiled_views' => __DIR__ . '/wp-content/themes/<your-theme>/dist/blade', // Where you want Blade to save compiled files.
 		'never_expire_cache'     => false, // Use `true` on production environments.
 		'base_path'              => __DIR__, // The base path that is common to the front-end and admin.
+		'encode_echo'            => true, // Double-encode entities in `{{ }}` output. See "Echo encoding" below.
 	]
 );
 ```
+
+#### Echo encoding
+
+By default Blade's `{{ $value }}` calls `e( $value, true )`, which **double-encodes** HTML entities. This is the Laravel default and is preserved by setting `encode_echo => true`.
+
+If your templates receive values that have already been escaped upstream (for example, the output of WordPress's `esc_html()`, `esc_attr()`, or `wptexturize()`), double-encoding turns `&amp;` into the literal text `&amp;amp;`. Set `encode_echo => false` to switch to single-encoding (`e( $value, false )`) so upstream encoding is preserved.
 
 ### Bootstrap a layout.
 
