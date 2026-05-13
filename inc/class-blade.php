@@ -66,6 +66,22 @@ class Blade {
 	public bool $encode_echo = true;
 
 	/**
+	 * Whether to register WordPress-aware escape directives on the Blade compiler.
+	 *
+	 * When `true`, the following directives are available in templates:
+	 *
+	 * - `@text($v)`      → `echo esc_html( $v );`
+	 * - `@url($v)`       → `echo esc_url( $v );`
+	 * - `@attr($v)`      → `echo esc_attr( $v );`
+	 * - `@safe_html($v)` → `echo wp_kses_post( $v );`
+	 *
+	 * Set to `false` to skip registration (e.g. if the consumer registers its own).
+	 *
+	 * @var bool Register WP directives.
+	 */
+	public bool $register_wp_directives = true;
+
+	/**
 	 * Store view factory.
 	 *
 	 * @var ViewFactory View factory.
@@ -123,6 +139,13 @@ class Blade {
 			$this->blade_compiler->setEchoFormat( 'e(%s, false)' );
 		}
 
+		// Register WordPress-aware escape directives so consumers can write
+		// `@text($v)`, `@url($v)`, `@attr($v)`, and `@safe_html($v)` instead of
+		// the corresponding `esc_*()` / `wp_kses_post()` calls inline.
+		if ( $this->register_wp_directives ) {
+			$this->register_wordpress_directives();
+		}
+
 		$view_resolver->register( 'blade', function () {
 			return new CompilerEngine( $this->blade_compiler );
 		} );
@@ -169,6 +192,36 @@ class Blade {
 			} );
 		}
 		// phpcs:enable
+	}
+
+	/**
+	 * Register WordPress-aware escape directives on the Blade compiler.
+	 *
+	 * The directive expression — including the surrounding parentheses — is
+	 * forwarded verbatim to the corresponding WordPress escape helper, so
+	 * `@url( $foo )` compiles to `<?php echo esc_url( $foo ); ?>`.
+	 *
+	 * @return void
+	 */
+	protected function register_wordpress_directives(): void {
+		$directives = [
+			'text'      => function ( string $expression ): string {
+				return "<?php echo esc_html{$expression}; ?>";
+			},
+			'url'       => function ( string $expression ): string {
+				return "<?php echo esc_url{$expression}; ?>";
+			},
+			'attr'      => function ( string $expression ): string {
+				return "<?php echo esc_attr{$expression}; ?>";
+			},
+			'safe_html' => function ( string $expression ): string {
+				return "<?php echo wp_kses_post{$expression}; ?>";
+			},
+		];
+
+		foreach ( $directives as $name => $compiler ) {
+			$this->blade_compiler->directive( $name, $compiler );
+		}
 	}
 
 	/**
