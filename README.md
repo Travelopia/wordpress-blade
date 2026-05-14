@@ -101,7 +101,7 @@ define(
 		'never_expire_cache'     => false, // Use `true` on production environments.
 		'base_path'              => __DIR__, // The base path that is common to the front-end and admin.
 		'encode_echo'            => true, // Double-encode entities in `{{ }}` output. See "Echo encoding" below.
-		'register_wp_directives' => true, // Register `@text`, `@url`, `@attr`, `@safe_html` directives. See "WordPress-aware escape directives" below.
+		'register_wp_directives' => true, // Register `@escHtml`, `@escUrl`, `@escAttr`, `@wpKsesPost` directives. See "WordPress-aware escape directives" below.
 	]
 );
 ```
@@ -118,10 +118,12 @@ The package registers four Blade directives that wrap WordPress's escape helpers
 
 | Directive | Compiles to | Use for |
 |---|---|---|
-| `@text( $v )` | `echo esc_html( $v );` | Plain text in HTML bodies |
-| `@url( $v )` | `echo esc_url( $v );` | `href` / `src` attribute values |
-| `@attr( $v )` | `echo esc_attr( $v );` | Other HTML attribute values |
-| `@safe_html( $v )` | `echo wp_kses_post( $v );` | Rich text from editors (block content, ACF WYSIWYG, etc.) |
+| `@escHtml( $v )` | `echo esc_html( $v );` | Plain text in HTML bodies |
+| `@escUrl( $v )` | `echo esc_url( $v );` | `href` / `src` attribute values |
+| `@escAttr( $v )` | `echo esc_attr( $v );` | Other HTML attribute values |
+| `@wpKsesPost( $v )` | `echo wp_kses_post( $v );` | Rich text from editors (block content, ACF WYSIWYG, etc.) |
+
+Directive names are prefixed (`@esc*` / `@wp*`) so they correlate with the underlying WordPress helper and stay out of Laravel's reserved-directive namespace.
 
 The expression — including its surrounding parentheses — is forwarded verbatim to the underlying WordPress helper. To skip registration (for example, if your project registers its own escape directives), set `'register_wp_directives' => false` in the bootstrap config or filter `wordpress_blade_register_wp_directives`.
 

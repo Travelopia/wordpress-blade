@@ -70,10 +70,10 @@ class Blade {
 	 *
 	 * When `true`, the following directives are available in templates:
 	 *
-	 * - `@text($v)`      → `echo esc_html( $v );`
-	 * - `@url($v)`       → `echo esc_url( $v );`
-	 * - `@attr($v)`      → `echo esc_attr( $v );`
-	 * - `@safe_html($v)` → `echo wp_kses_post( $v );`
+	 * - `@escHtml($v)`     → `echo esc_html( $v );`
+	 * - `@escUrl($v)`      → `echo esc_url( $v );`
+	 * - `@escAttr($v)`     → `echo esc_attr( $v );`
+	 * - `@wpKsesPost($v)`  → `echo wp_kses_post( $v );`
 	 *
 	 * Set to `false` to skip registration (e.g. if the consumer registers its own).
 	 *
@@ -140,8 +140,8 @@ class Blade {
 		}
 
 		// Register WordPress-aware escape directives so consumers can write
-		// `@text($v)`, `@url($v)`, `@attr($v)`, and `@safe_html($v)` instead of
-		// the corresponding `esc_*()` / `wp_kses_post()` calls inline.
+		// `@escHtml($v)`, `@escUrl($v)`, `@escAttr($v)`, and `@wpKsesPost($v)` instead
+		// of the corresponding `esc_*()` / `wp_kses_post()` calls inline.
 		if ( $this->register_wp_directives ) {
 			$this->register_wordpress_directives();
 		}
@@ -197,24 +197,26 @@ class Blade {
 	/**
 	 * Register WordPress-aware escape directives on the Blade compiler.
 	 *
-	 * The directive expression — including the surrounding parentheses — is
-	 * forwarded verbatim to the corresponding WordPress escape helper, so
-	 * `@url( $foo )` compiles to `<?php echo esc_url( $foo ); ?>`.
+	 * Directive names are prefixed (`@escHtml`, `@escUrl`, `@escAttr`,
+	 * `@wpKsesPost`) so they correlate with the underlying WordPress helper
+	 * and stay out of Laravel's reserved-directive namespace. The directive
+	 * expression — including the surrounding parentheses — is forwarded
+	 * verbatim, so `@escUrl( $foo )` compiles to `<?php echo esc_url( $foo ); ?>`.
 	 *
 	 * @return void
 	 */
 	protected function register_wordpress_directives(): void {
 		$directives = [
-			'text'      => function ( string $expression ): string {
+			'escHtml'    => function ( string $expression ): string {
 				return "<?php echo esc_html{$expression}; ?>";
 			},
-			'url'       => function ( string $expression ): string {
+			'escUrl'     => function ( string $expression ): string {
 				return "<?php echo esc_url{$expression}; ?>";
 			},
-			'attr'      => function ( string $expression ): string {
+			'escAttr'    => function ( string $expression ): string {
 				return "<?php echo esc_attr{$expression}; ?>";
 			},
-			'safe_html' => function ( string $expression ): string {
+			'wpKsesPost' => function ( string $expression ): string {
 				return "<?php echo wp_kses_post{$expression}; ?>";
 			},
 		];
