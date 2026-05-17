@@ -29,6 +29,8 @@ function bootstrap(): void {
  *     path_to_views: string,
  *     path_to_compiled_views: string,
  *     never_expire_cache: bool,
+ *     encode_echo: bool,
+ *     register_wp_directives: bool,
  * }
  */
 function get_configuration(): array {
@@ -37,6 +39,8 @@ function get_configuration(): array {
 		'paths_to_views'         => [],
 		'path_to_compiled_views' => '',
 		'never_expire_cache'     => false,
+		'encode_echo'            => true,
+		'register_wp_directives' => true,
 	];
 
 	// Initialize Blade.
@@ -80,6 +84,8 @@ function get_blade(): Blade {
 	$blade->path_to_compiled_views = apply_filters( 'wordpress_blade_compiled_path', $blade_config['path_to_compiled_views'] );
 	$blade->never_expire_cache     = apply_filters( 'wordpress_blade_never_expire_cache', $blade_config['never_expire_cache'] );
 	$blade->base_path              = apply_filters( 'wordpress_blade_base_path', $blade_config['base_path'] );
+	$blade->encode_echo            = apply_filters( 'wordpress_blade_encode_echo', $blade_config['encode_echo'] );
+	$blade->register_wp_directives = apply_filters( 'wordpress_blade_register_wp_directives', $blade_config['register_wp_directives'] );
 	$blade->view_callback          = __NAMESPACE__ . '\\view_callback';
 	$blade->initialize();
 

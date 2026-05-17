@@ -55,6 +55,33 @@ class Blade {
 	public string $base_path = '';
 
 	/**
+	 * Whether to double-encode entities in `{{ }}` output.
+	 *
+	 * `true` preserves Blade's default `e( $value, true )` (double-encoding).
+	 * `false` switches to `e( $value, false )` so already-escaped strings
+	 * (e.g. output of WordPress `esc_*()` helpers) are not re-encoded.
+	 *
+	 * @var bool Encode echo.
+	 */
+	public bool $encode_echo = true;
+
+	/**
+	 * Whether to register WordPress-aware escape directives on the Blade compiler.
+	 *
+	 * When `true`, the following directives are available in templates:
+	 *
+	 * - `@escHtml($v)`     → `echo esc_html( $v );`
+	 * - `@escUrl($v)`      → `echo esc_url( $v );`
+	 * - `@escAttr($v)`     → `echo esc_attr( $v );`
+	 * - `@wpKsesPost($v)`  → `echo wp_kses_post( $v );`
+	 *
+	 * Set to `false` to skip registration (e.g. if the consumer registers its own).
+	 *
+	 * @var bool Register WP directives.
+	 */
+	public bool $register_wp_directives = true;
+
+	/**
 	 * Store view factory.
 	 *
 	 * @var ViewFactory View factory.
@@ -104,6 +131,21 @@ class Blade {
 
 		$this->blade_compiler->never_expire_cache = $this->never_expire_cache;
 
+		// Optionally disable double-encoding on `{{ }}` output. WordPress's `esc_*()`
+		// helpers already encode special characters upstream of the template, so Blade's
+		// default `e( $value, true )` re-encodes them — `&amp;` becomes the literal text
+		// `&amp;amp;`. Sites can opt in to single-encoding via the `encode_echo` config.
+		if ( ! $this->encode_echo ) {
+			$this->blade_compiler->setEchoFormat( 'e(%s, false)' );
+		}
+
+		// Register WordPress-aware escape directives so consumers can write
+		// `@escHtml($v)`, `@escUrl($v)`, `@escAttr($v)`, and `@wpKsesPost($v)` instead
+		// of the corresponding `esc_*()` / `wp_kses_post()` calls inline.
+		if ( $this->register_wp_directives ) {
+			$this->register_wordpress_directives();
+		}
+
 		$view_resolver->register( 'blade', function () {
 			return new CompilerEngine( $this->blade_compiler );
 		} );
@@ -150,6 +192,38 @@ class Blade {
 			} );
 		}
 		// phpcs:enable
+	}
+
+	/**
+	 * Register WordPress-aware escape directives on the Blade compiler.
+	 *
+	 * Directive names are prefixed (`@escHtml`, `@escUrl`, `@escAttr`,
+	 * `@wpKsesPost`) so they correlate with the underlying WordPress helper
+	 * and stay out of Laravel's reserved-directive namespace. The directive
+	 * expression — including the surrounding parentheses — is forwarded
+	 * verbatim, so `@escUrl( $foo )` compiles to `<?php echo esc_url( $foo ); ?>`.
+	 *
+	 * @return void
+	 */
+	protected function register_wordpress_directives(): void {
+		$directives = [
+			'escHtml'    => function ( string $expression ): string {
+				return "<?php echo esc_html{$expression}; ?>";
+			},
+			'escUrl'     => function ( string $expression ): string {
+				return "<?php echo esc_url{$expression}; ?>";
+			},
+			'escAttr'    => function ( string $expression ): string {
+				return "<?php echo esc_attr{$expression}; ?>";
+			},
+			'wpKsesPost' => function ( string $expression ): string {
+				return "<?php echo wp_kses_post{$expression}; ?>";
+			},
+		];
+
+		foreach ( $directives as $name => $compiler ) {
+			$this->blade_compiler->directive( $name, $compiler );
+		}
 	}
 
 	/**
