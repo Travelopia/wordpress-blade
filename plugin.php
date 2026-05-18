@@ -4,7 +4,7 @@
  * Description: Use Laravel Blade components in WordPress.
  * Author: Travelopia Team
  * Author URI: https://www.travelopia.com
- * Version: 1.2.0
+ * Version: 1.2.1
  *
  * @package wordpress-blade
  */
