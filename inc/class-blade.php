@@ -199,25 +199,26 @@ class Blade {
 	 *
 	 * Directive names are prefixed (`@escHtml`, `@escUrl`, `@escAttr`,
 	 * `@wpKsesPost`) so they correlate with the underlying WordPress helper
-	 * and stay out of Laravel's reserved-directive namespace. The directive
-	 * expression — including the surrounding parentheses — is forwarded
-	 * verbatim, so `@escUrl( $foo )` compiles to `<?php echo esc_url( $foo ); ?>`.
+	 * and stay out of Laravel's reserved-directive namespace. Illuminate's
+	 * Blade compiler strips the outer parentheses before invoking the
+	 * directive callback, so each callback wraps the expression in `(...)`
+	 * — `@escUrl( $foo )` compiles to `<?php echo esc_url( $foo ); ?>`.
 	 *
 	 * @return void
 	 */
 	protected function register_wordpress_directives(): void {
 		$directives = [
 			'escHtml'    => function ( string $expression ): string {
-				return "<?php echo esc_html{$expression}; ?>";
+				return "<?php echo esc_html({$expression}); ?>";
 			},
 			'escUrl'     => function ( string $expression ): string {
-				return "<?php echo esc_url{$expression}; ?>";
+				return "<?php echo esc_url({$expression}); ?>";
 			},
 			'escAttr'    => function ( string $expression ): string {
-				return "<?php echo esc_attr{$expression}; ?>";
+				return "<?php echo esc_attr({$expression}); ?>";
 			},
 			'wpKsesPost' => function ( string $expression ): string {
-				return "<?php echo wp_kses_post{$expression}; ?>";
+				return "<?php echo wp_kses_post({$expression}); ?>";
 			},
 		];
 
