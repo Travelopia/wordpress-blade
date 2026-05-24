@@ -74,6 +74,8 @@ class Blade {
 	 * - `@escUrl($v)`      → `echo esc_url( $v );`
 	 * - `@escAttr($v)`     → `echo esc_attr( $v );`
 	 * - `@wpKsesPost($v)`  → `echo wp_kses_post( $v );`
+	 * - `@stripTags($v)`   → `echo wp_strip_all_tags( $v );`
+	 * - `@safeEscape($v)`  → `echo esc_html( wp_strip_all_tags( $v ) );` (combined: strip then escape)
 	 *
 	 * Set to `false` to skip registration (e.g. if the consumer registers its own).
 	 *
@@ -219,6 +221,12 @@ class Blade {
 			},
 			'wpKsesPost' => function ( string $expression ): string {
 				return "<?php echo wp_kses_post({$expression}); ?>";
+			},
+			'stripTags'  => function ( string $expression ): string {
+				return "<?php echo wp_strip_all_tags({$expression}); ?>";
+			},
+			'safeEscape' => function ( string $expression ): string {
+				return "<?php echo esc_html( wp_strip_all_tags({$expression}) ); ?>";
 			},
 		];
 

@@ -43,6 +43,8 @@ $blade                         = new Blade();
 $blade->paths_to_views         = $blade_config['paths_to_views'] ?? [];
 $blade->path_to_compiled_views = $blade_config['path_to_compiled_views'] ?? '';
 $blade->base_path              = $blade_config['base_path'] ?? '';
+$blade->encode_echo            = $blade_config['encode_echo'] ?? true;
+$blade->register_wp_directives = $blade_config['register_wp_directives'] ?? true;
 $blade->initialize();
 
 // Build Blade cache.

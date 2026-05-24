@@ -101,7 +101,7 @@ define(
 		'never_expire_cache'     => false, // Use `true` on production environments.
 		'base_path'              => __DIR__, // The base path that is common to the front-end and admin.
 		'encode_echo'            => true, // Double-encode entities in `{{ }}` output. See "Echo encoding" below.
-		'register_wp_directives' => true, // Register `@escHtml`, `@escUrl`, `@escAttr`, `@wpKsesPost` directives. See "WordPress-aware escape directives" below.
+		'register_wp_directives' => true, // Register `@escHtml`, `@escUrl`, `@escAttr`, `@wpKsesPost`, `@stripTags`, `@safeEscape` directives. See "WordPress-aware escape directives" below.
 	]
 );
 ```
@@ -114,7 +114,7 @@ If your templates receive values that have already been escaped upstream (for ex
 
 #### WordPress-aware escape directives
 
-The package registers four Blade directives that wrap WordPress's escape helpers, letting templates express intent rather than the function call:
+The package registers six Blade directives that wrap WordPress's escape helpers, letting templates express intent rather than the function call:
 
 | Directive | Compiles to | Use for |
 |---|---|---|
@@ -122,8 +122,10 @@ The package registers four Blade directives that wrap WordPress's escape helpers
 | `@escUrl( $v )` | `echo esc_url( $v );` | `href` / `src` attribute values |
 | `@escAttr( $v )` | `echo esc_attr( $v );` | Other HTML attribute values |
 | `@wpKsesPost( $v )` | `echo wp_kses_post( $v );` | Rich text from editors (block content, ACF WYSIWYG, etc.) |
+| `@stripTags( $v )` | `echo wp_strip_all_tags( $v );` | Atomic strip-only — for values that need tag removal but will be escaped or used somewhere else (JSON, plain text response, an upstream-escaped pipeline). |
+| `@safeEscape( $v )` | `echo esc_html( wp_strip_all_tags( $v ) );` | The combined "strip then escape" path — the safe default for plain-text fields that may receive `wpautop`-wrapped or otherwise tag-laden content (post titles via filters, ACF text fields rendered alongside WYSIWYG siblings). |
 
-Directive names are prefixed (`@esc*` / `@wp*`) so they correlate with the underlying WordPress helper and stay out of Laravel's reserved-directive namespace.
+Directive names are prefixed / cased to correlate with the underlying WordPress helper (`@esc*` → `esc_*()`, `@wp*` → `wp_*()`, `@stripTags` → `wp_strip_all_tags()`, `@safeEscape` → the combined safe-default) and stay out of Laravel's reserved-directive namespace.
 
 The expression — including its surrounding parentheses — is forwarded verbatim to the underlying WordPress helper. To skip registration (for example, if your project registers its own escape directives), set `'register_wp_directives' => false` in the bootstrap config or filter `wordpress_blade_register_wp_directives`.
 
