@@ -74,8 +74,14 @@ class Compiler extends BladeCompiler {
 		}
 
 		// Mirror the source path relative to the base path, without `.blade.php`.
-		$relative = ltrim( Str::after( strval( $path ), $this->basePath ), '/' );
+		$source   = realpath( strval( $path ) ) ?: strval( $path );
+		$relative = ltrim( Str::after( $source, $this->basePath ), '/' );
 		$relative = Str::replaceLast( '.blade.php', '', $relative );
+
+		// Never write outside the compiled path: fall back to the hashed name.
+		if ( in_array( '..', explode( '/', str_replace( '\\', '/', $relative ) ), true ) ) {
+			return parent::getCompiledPath( $path );
+		}
 
 		// Keep any suffix Laravel adds to the hashed name (e.g. per echo format)
 		// so each variant still gets its own compiled file.
