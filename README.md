@@ -99,6 +99,7 @@ define(
 		],
 		'path_to_compiled_views' => __DIR__ . '/wp-content/themes/<your-theme>/dist/blade', // Where you want Blade to save compiled files.
 		'never_expire_cache'     => false, // Use `true` on production environments.
+		'mirror_source_paths'    => false, // Name compiled files after their source path instead of a hash. See "Compiled file names" below.
 		'base_path'              => __DIR__, // The base path that is common to the front-end and admin.
 		'encode_echo'            => true, // Double-encode entities in `{{ }}` output. See "Echo encoding" below.
 		'register_wp_directives' => true, // Register `@escHtml`, `@escUrl`, `@escAttr`, `@wpKsesPost`, `@stripTags`, `@safeEscape` directives. See "WordPress-aware escape directives" below.
@@ -111,6 +112,19 @@ define(
 By default Blade's `{{ $value }}` calls `e( $value, true )`, which **double-encodes** HTML entities. This is the Laravel default and is preserved by setting `encode_echo => true`.
 
 If your templates receive values that have already been escaped upstream (for example, the output of WordPress's `esc_html()`, `esc_attr()`, or `wptexturize()`), double-encoding turns `&amp;` into the literal text `&amp;amp;`. Set `encode_echo => false` to switch to single-encoding (`e( $value, false )`) so upstream encoding is preserved.
+
+#### Compiled file names
+
+By default compiled files get Laravel's names: a hash of the source path, such as `dist/blade/00d30b3d7cbf76970d0d39cbbba43004.php`, written through a randomly named temp file. Endpoint security tools can block randomly named PHP files that PHP writes and then runs, which makes local pages slow or broken.
+
+Set `mirror_source_paths => true` (or filter `wordpress_blade_mirror_source_paths`) to name each compiled file after its source path, relative to `base_path`, and write it in place:
+
+```
+wp-content/themes/<your-theme>/src/components/card/index.blade.php
+→ wp-content/themes/<your-theme>/dist/blade/wp-content/themes/<your-theme>/src/components/card/index.php
+```
+
+The build that compiles views for production and the production server must use the same setting: with `never_expire_cache` on, the server never recompiles, so a view compiled under the other naming is not found. To use it only on local machines, set it from an environment check that is false both on the server and in the build that compiles for it.
 
 #### WordPress-aware escape directives
 

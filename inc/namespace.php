@@ -29,6 +29,7 @@ function bootstrap(): void {
  *     path_to_views: string,
  *     path_to_compiled_views: string,
  *     never_expire_cache: bool,
+ *     mirror_source_paths: bool,
  *     encode_echo: bool,
  *     register_wp_directives: bool,
  * }
@@ -39,6 +40,7 @@ function get_configuration(): array {
 		'paths_to_views'         => [],
 		'path_to_compiled_views' => '',
 		'never_expire_cache'     => false,
+		'mirror_source_paths'    => false,
 		'encode_echo'            => true,
 		'register_wp_directives' => true,
 	];
@@ -83,6 +85,7 @@ function get_blade(): Blade {
 	$blade->paths_to_views         = apply_filters( 'wordpress_blade_view_paths', $blade_config['paths_to_views'] );
 	$blade->path_to_compiled_views = apply_filters( 'wordpress_blade_compiled_path', $blade_config['path_to_compiled_views'] );
 	$blade->never_expire_cache     = apply_filters( 'wordpress_blade_never_expire_cache', $blade_config['never_expire_cache'] );
+	$blade->mirror_source_paths    = (bool) apply_filters( 'wordpress_blade_mirror_source_paths', $blade_config['mirror_source_paths'] );
 	$blade->base_path              = apply_filters( 'wordpress_blade_base_path', $blade_config['base_path'] );
 	$blade->encode_echo            = apply_filters( 'wordpress_blade_encode_echo', $blade_config['encode_echo'] );
 	$blade->register_wp_directives = apply_filters( 'wordpress_blade_register_wp_directives', $blade_config['register_wp_directives'] );
