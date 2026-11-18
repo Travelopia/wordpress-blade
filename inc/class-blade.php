@@ -34,6 +34,13 @@ class Blade {
 	public bool $never_expire_cache = false;
 
 	/**
+	 * Name compiled files after their source path instead of a hash.
+	 *
+	 * @var bool Mirror source paths.
+	 */
+	public bool $mirror_source_paths = false;
+
+	/**
 	 * Store all paths to views.
 	 *
 	 * @var array Paths to views.
@@ -131,7 +138,8 @@ class Blade {
 		$view_resolver        = new EngineResolver();
 		$this->blade_compiler = new BladeCompiler( $filesystem, $this->path_to_compiled_views, $this->base_path );
 
-		$this->blade_compiler->never_expire_cache = $this->never_expire_cache;
+		$this->blade_compiler->never_expire_cache  = $this->never_expire_cache;
+		$this->blade_compiler->mirror_source_paths = $this->mirror_source_paths;
 
 		// Optionally disable double-encoding on `{{ }}` output. WordPress's `esc_*()`
 		// helpers already encode special characters upstream of the template, so Blade's
